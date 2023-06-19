@@ -1,65 +1,134 @@
-// Codice JavaScript per la gestione del carrello
+const slideshowSlides = document.querySelectorAll(".slideshow-slide");
+const slideCaptions = document.querySelectorAll(".slide-caption");
 
-// Array che conterrà gli oggetti prodotto nel carrello
-let carrello = [];
+let slideIndex = 0;
 
-// Funzione per aggiungere un prodotto al carrello
-function aggiungiAlCarrello() {
-    // Recupera i dati del prodotto dalla scheda prodotto
-    let immagine = document.getElementById('immagine-prodotto').src;
-    let titolo = document.getElementById('titolo-prodotto').textContent;
-    let descrizione = document.getElementById('descrizione-prodotto').textContent;
-    let taglia = document.getElementById('taglia-prodotto').value;
-    let colore = document.getElementById('colore-prodotto').value;
-    let quantita = parseInt(document.getElementById('quantita-prodotto').value);
-    let prezzo = 19.99; // Prezzo fisso per tutti i prodotti (esempio)
+function showSlides() {
+  for (let i = 0; i < slideshowSlides.length; i++) {
+    slideshowSlides[i].classList.remove("active");
+    slideCaptions[i].classList.remove("active");
+  }
 
-    // Crea l'oggetto prodotto con i dati recuperati
-    let prodotto = {
-        immagine: immagine,
-        titolo: titolo,
-        descrizione: descrizione,
-        taglia: taglia,
-        colore: colore,
-        quantita: quantita,
-        prezzo: prezzo
-    };
+  slideIndex++;
 
-    // Aggiunge il prodotto al carrello
-    carrello.push(prodotto);
+  if (slideIndex > slideshowSlides.length) {
+    slideIndex = 1;
+  }
 
-    // Aggiorna il numero di prodotti nel carrello nell'header
-    let numeroProdottiCarrello = document.getElementById('numero-prodotti-carrello');
-    numeroProdottiCarrello.textContent = '(' + carrello.length + ')';
+  slideshowSlides[slideIndex - 1].classList.add("active");
+  slideCaptions[slideIndex - 1].classList.add("active");
 
-    // Chiude la scheda prodotto
-    document.getElementById('scheda-prodotto').style.display = 'none';
+  setTimeout(showSlides, 5000);
 }
 
-// Funzione per rimuovere un prodotto dal carrello
-function rimuoviDalCarrello(index) {
-    // Rimuove il prodotto dall'array carrello
-    carrello.splice(index, 1);
+showSlides();
 
-    // Aggiorna il numero di prodotti nel carrello nell'header
-    let numeroProdottiCarrello = document.getElementById('numero-prodotti-carrello');
-    numeroProdottiCarrello.textContent = '(' + carrello.length + ')';
+const addToCartButtons = document.querySelectorAll(".add-to-cart");
+const cartTable = document.querySelector(".cart-table");
 
-    // Aggiorna la tabella del carrello
-    aggiornaTabellaCarrello();
+let cartItems = [];
+
+function addToCart(event) {
+  const productCard = event.target.closest(".product-card");
+  const productImage = productCard.querySelector("img").src;
+  const productName = productCard.querySelector("h1").textContent;
+  const productDescription = productCard.querySelector("p").textContent;
+  const productSize = productCard.querySelector("#product-size").value;
+  const productColor = productCard.querySelector("#product-color").value;
+  const productQuantity = productCard.querySelector("#product-quantity").value;
+
+  const cartItem = {
+    image: productImage,
+    name: productName,
+    description: productDescription,
+    size: productSize,
+    color: productColor,
+    quantity: productQuantity,
+  };
+
+  cartItems.push(cartItem);
+
+  updateCartTable();
 }
 
-// Funzione per aggiornare la quantità di un prodotto nel carrello
-function aggiornaQuantita(index, quantita) {
-    // Aggiorna la quantità del prodotto nell'array carrello
-    carrello[index].quantita = quantita;
+function updateCartTable() {
+  cartTable.innerHTML = `
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Size</th>
+        <th>Color</th>
+        <th>Quantity</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      ${cartItems
+        .map((item, index) => {
+          return `
+            <tr>
+              <td><img src="${item.image}" alt="${item.name}"></td>
+              <td>${item.name}</td>
+              <td>${item.description}</td>
+              <td>${item.size}</td>
+              <td>${item.color}</td>
+              <td><input type="number" value="${item.quantity}" min="1" max="10" data-index="${index}"></td>
+              <td><button class="remove-from-cart" data-index="${index}">Remove</button></td>
+            </tr>
+          `;
+        })
+        .join("")}
+    </tbody>
+  `;
 
-    // Aggiorna la tabella del carrello
-    aggiornaTabellaCarrello();
+  const quantityInputs = cartTable.querySelectorAll('input[type="number"]');
+  quantityInputs.forEach((input) =>
+    input.addEventListener("input", updateQuantity)
+  );
+
+  const removeButtons = cartTable.querySelectorAll(".remove-from-cart");
+  removeButtons.forEach((button) =>
+    button.addEventListener("click", removeFromCart)
+  );
 }
 
-// Funzione per mostrare la scheda prodotto
-function mostraSchedaProdotto(idProdotto) {
-    // Recupera i dati del prodotto corrispondente all'id dalla scheda prodotto
-    let immagine = document.getElementById(idProdotto + '-immagine').src;
-    let titolo = document.getElementById(idProdotto + '-titolo').textContent;
+function updateQuantity(event) {
+  const index = event.target.dataset.index;
+  const quantity = event.target.value;
+  cartItems[index].quantity = quantity;
+
+  updateCartTable();
+}
+
+function removeFromCart(event) {
+  const index = event.target.dataset.index;
+  cartItems.splice(index, 1);
+
+  updateCartTable();
+}
+
+addToCartButtons.forEach((button) =>
+  button.addEventListener("click", addToCart)
+);
+
+const searchForm = document.querySelector(".search-form");
+const productCards = document.querySelectorAll(".product-card");
+
+searchForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const searchTerm = searchForm.querySelector('input[type="text"]').value.toLowerCase();
+
+  productCards.forEach((card) => {
+    const productName = card.querySelector("h1").textContent.toLowerCase();
+    const productDescription = card.querySelector("p").textContent.toLowerCase();
+
+    if (productName.includes(searchTerm) || productDescription.includes(searchTerm)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+});
