@@ -1,58 +1,49 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Sillage</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js"></script>
-    </head>
-    <body>
-        <header>
-            <div class="logo">
-                <img src="logo.png" alt="Logo">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Ricerca Prodotti</a></li>
-                    <li><a href="#" onclick="mostraCarrello()">Carrello <span id="numero-prodotti-carrello">(0)</span></a></li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <section class="slideshow">
-                <img src="slide1.jpg" alt="Fresh Parfume" onclick="mostraSchedaProdotto('prodotto1')">
-                <img src="slide2.jpg" alt="Rose Parfume" onclick="mostraSchedaProdotto('prodotto2')">
-                <img src="slide3.jpg" alt="Vanille Parfume" onclick="mostraSchedaProdotto('prodotto3')">
-            </section>
-            <section class="scheda-prodotto" id="scheda-prodotto">
-                <img src="" alt="" id="immagine-prodotto">
-                <div class="descrizione-prodotto">
-                    <h1 id="titolo-prodotto"></h1>
-                    <p id="descrizione-prodotto"></p>
-                    <p>Taglia: <select id="taglia-prodotto"></select></p>
-                    <p>Colore: <select id="colore-prodotto"></select></p>
-                    <p>Quantità: <input type="number" value="1" id="quantita-prodotto"></p>
-                    <button class="aggiungi-al-carrello" onclick="aggiungiAlCarrello()">Aggiungi al carrello</button>
-                </div>
-            </section>
-        </main>
-        <div class="carrello" id="carrello">
-            <h1>Carrello</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Prodotto</th>
-                        <th>Quantità</th>
-                        <th>Prezzo</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody id="corpo-tabella-carrello">
-                </tbody>
-            </table>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profumi</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">Profumi</div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Prodotti</a></li>
+          <li><a href="#">Contatti</a></li>
+          <li><a href="#">Carrello</a></li>
+          <li><a href="#">Ricerca</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="slideshow-container">
+        <div class="slideshow-slide fade">
+          <a href="scheda_prodotto.html">
+            <img src="img/prodotto1.jpg" alt="Prodotto 1" />
+            <div class="slide-caption">Prodotto 1</div>
+          </a>
         </div>
-        <footer>
-            <p>Sillage &copy; 2023</p>
-        </footer>
-    </body>
-</html> 
+        <div class="slideshow-slide fade">
+          <a href="scheda_prodotto.html">
+            <img src="img/prodotto2.jpg" alt="Prodotto 2" />
+            <div class="slide-caption">Prodotto 2</div>
+          </a>
+        </div>
+        <div class="slideshow-slide fade">
+          <a href="scheda_prodotto.html">
+            <img src="img/prodotto3.jpg" alt="Prodotto 3" />
+            <div class="slide-caption">Prodotto 3</div>
+          </a>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>Copyright © 2023
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
