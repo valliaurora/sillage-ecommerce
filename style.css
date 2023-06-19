@@ -92,22 +92,6 @@ main {
   font-size: 24px;
 }
 
-.slide-caption-2 {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  color: #f400a1;
-  font-size: 24px;
-}
-
-.slide-caption-3 {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  color: #2271b3;
-  font-size: 24px;
-}
-
 .product-card {
   display: flex;
   justify-content: space-between;
