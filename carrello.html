@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrello</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">Profumi</div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Prodotti</a></li>
+          <li><a href="#">Contatti</a></li>
+          <li><a href="#">Carrello</a></li>
+          <li><a href="#">Ricerca</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Carrello</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Prodotto</th>
+            <th>Descrizione</th>
+            <th>Quantità</th>
+            <th>Prezzo</th>
+            <th>Elimina</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <img src="img/prodotto1.jpg" alt="Prodotto 1" />
+            </td>
+            <td>Descrizione del prodotto</td>
+            <td>
+              <input type="number" value="1" min="1" />
+            </td>
+            <td>€19.99</td>
+            <td>
+              <button class="remove-from-cart">Elimina</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="img/prodotto2.jpg" alt="Prodotto 2" />
+            </td>
+            <td>Descrizione del prodotto</td>
+            <td>
+              <input type="number" value="2" min="1" />
+            </td>
+            <td>€29.99</td>
+            <td>
+              <button class="remove-from-cart">Elimina</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="checkout">Checkout</button>
+    </main>
+    <footer>
+      <p>&copy; 2023</p>
+    </footer>
+  </body>
+</html>
