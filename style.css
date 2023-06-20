@@ -229,6 +229,8 @@ main {
 
 footer {
   position: absolute;
+  bottom: 0;
+  width: 100%;
   background-color: #333;
   color: #fff;
   padding: 20px;
