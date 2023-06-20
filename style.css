@@ -8,6 +8,17 @@ header img {
   max-width: 100px;
 }
 
+.footer-container {
+    box-sizing: border-box;
+    margin: 0 auto;
+    position: absolute !important;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 20px; 
+}
+
 .logo {
   font-size: 36px;
   font-weight: bold;
@@ -226,15 +237,4 @@ main {
 .product-list li p {
   font-size: 18px;
   margin-bottom: 10px;
-}
-
-.footer-container {
-    box-sizing: border-box;
-    margin: 0 auto;
-    position: absolute !important;
-    bottom: 0;
-    width: 100%;
-    background-color: #333;
-    color: #fff;
-    padding: 20px; 
 }
