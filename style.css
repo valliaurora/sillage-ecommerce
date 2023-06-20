@@ -62,7 +62,7 @@ main {
 .slideshow-container {
   position: relative;
   height: 500px;
-  padding: 50px;
+  padding-bottom: 50px;
 }
 
 .slideshow-slide {
