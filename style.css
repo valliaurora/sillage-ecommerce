@@ -9,14 +9,15 @@ header img {
 }
 
 footer {
-    box-sizing: border-box;
-    margin: 0 auto;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: #333;
-    color: #fff;
-    padding: 20px; 
+  background-color: #ddd;
+  color: #fff;
+  padding: 20px;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .logo {
