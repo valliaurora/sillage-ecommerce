@@ -1,35 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prodotto - Il Mondo dei Profumi</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+<html lang="it">
+ <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prodotti</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header>
-        <h1>Il Mondo dei Profumi</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="cart.html">Carrello</a></li>
-            </ul>
-        </nav>
+      <div class="logo">Sillage</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="prodotti.html">Prodotti</a></li>
+          <li><a href="#">Contatti</a></li>
+          <li><a href="carrello.html">Carrello</a></li>
+          <li><a href="#">Ricerca</a></li>
+        </ul>
+      </nav>
     </header>
-    <main>
-        <section id="product-details">
-            <img src="images/profumo1.jpg" alt="Profumo 1">
-            <h2>Nome del Profumo</h2>
-            <p>Descrizione dettagliata del prodotto.</p>
-            <p>Prezzo: €XX.XX</p>
-            <button>Aggiungi al carrello</button>
-            <button class="add-to-cart" data-id="1" data-name="Nome del Profumo" data-description="Descrizione dettagliata del profumo" data-price="XX.XX" data-image="images/profumo1.jpg">Aggiungi al carrello</button>
-
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Il Mondo dei Profumi. Tutti i diritti riservati.</p>
-    </footer>
-</body>
+    <div class="product">
+  <div class="product-image">
+    <img src="img/PARFUME.jpeg" alt="Product">
+  </div>
+  <div class="product-info">
+    <h1>ROSE PARFUME</h1>
+    <p>Il nostro profumo alle rose è un'esplosione di delicatezza e sensualità.
+      La fragranza floreale è delicata e romantica, con note leggere di petali di rosa, peonia e violetta, mentre la base di muschio bianco e ambra dona profondità e durata alla fragranza.
+      Perfetto per chi ama i profumi femminili e raffinati, questo profumo alle rose è ideale per ogni occasione, dalla giornata in ufficio alle serate speciali.
+      Scopri il nostro profumo alle rose e lasciati avvolgere dalla sua eleganza senza tempo.</p>
+    </div>
+    <div class="product-quantity">
+      <label for="quantity">Quantità:</label>
+      <input type="number" id="quantity" name="quantity" value="1" min="1">
+    </div>
+    <button class="add-to-cart-btn">Aggiungi al carrello</button>
+ </div>
+ <footer>
+  <div class="footer-content">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p>Sillage Copyright</p>
+  </div>
+</footer>
+  </body>
 </html>
