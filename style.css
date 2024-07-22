@@ -180,7 +180,7 @@ h2 {
 }
 
 #contact {
-  background: #6D4B11;
+  background: #ffffff;
 }
 
 #contact h3 {
@@ -260,6 +260,48 @@ fieldset {
   outline: 0;
   border: 1px solid #C6932C;
 }
+
+::-webkit-input-placeholder {
+  color: #8E7B54;
+}
+
+:-moz-placeholder {
+  color: #8E7B54;
+}
+
+::-moz-placeholder {
+  color: #8E7B54;
+}
+
+:-ms-input-placeholder {
+  color: #8E7B54;
+}
+
+.img-chi {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .contatti {
+    flex-direction: column;
+
+    margin: 0 20px;
+  }
+
+  #contact {
+    width: 100%;
+  }
+
+  .contatti .form {
+    width: 100%;
+    margin: 0;
+  }
+
+  .contatti .indirizzo {
+    margin: 20px 0;
+    order: 2;
+
+  }
 
 ::-webkit-input-placeholder {
   color: #99814B;
