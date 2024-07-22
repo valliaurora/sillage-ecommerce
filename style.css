@@ -3,12 +3,12 @@
 }
 
 .navbar-brand {
-  color: #8b4513 !important;
+  color: #6D4B11 !important;
 }
 
 .btn-primary {
-  background-color: #8b4513 !important;
-  border-color: #8b4513 !important;
+  background-color: #6D4B11 !important;
+  border-color: #6D4B11 !important;
 }
 
 body {
@@ -59,7 +59,7 @@ body {
 }
 
 #scopri {
-  color: #261905;
+  color: #6D4B11;
 }
 
 
@@ -180,7 +180,7 @@ h2 {
 }
 
 #contact {
-  background: #261905;
+  background: #6D4B11;
 }
 
 #contact h3 {
@@ -258,23 +258,23 @@ fieldset {
 #contact input:focus,
 #contact textarea:focus {
   outline: 0;
-  border: 1px solid #999;
+  border: 1px solid #C6932C;
 }
 
 ::-webkit-input-placeholder {
-  color: #888;
+  color: #99814B;
 }
 
 :-moz-placeholder {
-  color: #888;
+  color: #99814B;
 }
 
 ::-moz-placeholder {
-  color: #888;
+  color: #99814B;
 }
 
 :-ms-input-placeholder {
-  color: #888;
+  color: #99814B;
 }
 
 .img-chi {
