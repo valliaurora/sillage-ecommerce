@@ -1,18 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Slideshow sulla homepage
-    let slideIndex = 0;
-    const slides = document.querySelectorAll('#slideshow .slide');
-    function showSlides() {
-        slides.forEach(slide => slide.style.display = 'none');
-        slideIndex++;
-        if (slideIndex > slides.length) {slideIndex = 1}
-        slides[slideIndex - 1].style.display = 'block';
-        setTimeout(showSlides, 3000); // Cambia immagine ogni 3 secondi
+   <script type="text/javascript">
+function changeOrder(dot, number) {
+	var slides = document.querySelectorAll(".slide");
+	var dots = document.querySelectorAll(".dotnav-item");
+	for (var i = 0; i < slides.length; i++) {
+		slides[i].classList.remove('active');
+		dots[i].classList.remove('active');
     }
-    if (slides.length > 0) {
-        showSlides();
-    }
-
+	var elemName = "slide-" + number;
+	var elem = document.getElementById(elemName);
+	elem.classList.add('active');
+	dot.classList.add('active');
+}
+</script>
     
     // Gestione carrello
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -89,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         renderCart();
     }
 
-    // Esempio di aggiunta al carrello
+    // Aggiunta al carrello
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     addToCartButtons.forEach(button => {
         button.addEventListener('click', function() {
