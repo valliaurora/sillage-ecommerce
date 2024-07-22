@@ -50,7 +50,7 @@ body {
   opacity: 0.5;
 }
 
-.root {
+:root {
     --swiper-theme-color: #6d4b11;
 }
 
