@@ -1,252 +1,114 @@
-header {
-  background-color: #eee;
-  padding: 10px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-header img {
-  max-width: 100px;
-}
-
-footer {
-  background-color: #293133;
-  color: #fff;
-  padding: 20px;
-}
-
-.footer-content {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.logo {
-  font-size: 36px;
-  font-weight: bold;
-  color: #333;
-}
-
-.primary-color {
-  color: #333;
-}
-
-.secondary-color {
-  color: #999;
-}
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #eee;
-  padding: 10px;
-}
-
-nav ul {
-  display: flex;
-  list-style: none;
-}
-
-nav li {
-  margin: 0 10px;
-}
-
-nav li a {
-  text-decoration: none;
-  color: #333;
-}
-
-main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-
-document.addEventListener('DOMContentLoaded', (event) => {
-
 const swiper = new Swiper('.swiper', {
   //enable hash navigation
   hashNavigation: true,
 });
 
-.swiper {
-  width: 100%;
-  height: 85%;
+const addToCartButtons = document.querySelectorAll(".add-to-cart");
+const cartTable = document.querySelector(".cart-table");
+
+let cartItems = [];
+
+function addToCart(event) {
+  const productCard = event.target.closest(".product-card");
+  const productImage = productCard.querySelector("img").src;
+  const productName = productCard.querySelector("h1").textContent;
+  const productDescription = productCard.querySelector("p").textContent;
+  const productSize = productCard.querySelector("#product-size").value;
+  const productColor = productCard.querySelector("#product-color").value;
+  const productQuantity = productCard.querySelector("#product-quantity").value;
+
+  const cartItem = {
+    image: productImage,
+    name: productName,
+    description: productDescription,
+    size: productSize,
+    color: productColor,
+    quantity: productQuantity,
+  };
+
+  cartItems.push(cartItem);
+
+  updateCartTable();
 }
 
-.swiper-slide {
-  background: #DD925F;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+function updateCartTable() {
+  cartTable.innerHTML = `
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Size</th>
+        <th>Color</th>
+        <th>Quantity</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      ${cartItems
+        .map((item, index) => {
+          return `
+            <tr>
+              <td><img src="${item.image}" alt="${item.name}"></td>
+              <td>${item.name}</td>
+              <td>${item.description}</td>
+              <td>${item.size}</td>
+              <td>${item.color}</td>
+              <td><input type="number" value="${item.quantity}" min="1" max="10" data-index="${index}"></td>
+              <td><button class="remove-from-cart" data-index="${index}">Remove</button></td>
+            </tr>
+          `;
+        })
+        .join("")}
+    </tbody>
+  `;
+
+  const quantityInputs = cartTable.querySelectorAll('input[type="number"]');
+  quantityInputs.forEach((input) =>
+    input.addEventListener("input", updateQuantity)
+  );
+
+  const removeButtons = cartTable.querySelectorAll(".remove-from-cart");
+  removeButtons.forEach((button) =>
+    button.addEventListener("click", removeFromCart)
+  );
 }
 
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+function updateQuantity(event) {
+  const index = event.target.dataset.index;
+  const quantity = event.target.value;
+  cartItems[index].quantity = quantity;
+
+  updateCartTable();
 }
 
-.swiper-pagination{
-	align-items: center;
+function removeFromCart(event) {
+  const index = event.target.dataset.index;
+  cartItems.splice(index, 1);
+
+  updateCartTable();
 }
 
-.swiper-caption {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  color: #79553d;
-  font-size: 24px;
-}
+addToCartButtons.forEach((button) =>
+  button.addEventListener("click", addToCart)
+);
 
-.product-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px 0;
-  padding: 20px;
-  border: 1px solid #ddd;
-}
+const searchForm = document.querySelector(".search-form");
+const productCards = document.querySelectorAll(".product-card");
 
-.product-card img {
-  max-width: 200px;
-}
+searchForm.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-.product-info {
-  flex: 1;
-  margin-left: 20px;
-}
+  const searchTerm = searchForm.querySelector('input[type="text"]').value.toLowerCase();
 
-.product-info h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
-}
+  productCards.forEach((card) => {
+    const productName = card.querySelector("h1").textContent.toLowerCase();
+    const productDescription = card.querySelector("p").textContent.toLowerCase();
 
-.product-info p {
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-
-.product-details {
-  display: flex;
-  margin-bottom: 20px;
-}
-
-.product-details label {
-  font-size: 18px;
-  margin-right: 10px;
-}
-
-.product-details select,
-.product-details input[type="number"] {
-  font-size: 18px;
-}
-
-.add-to-cart {
-  padding: 10px 20px;
-  border: none;
-  background-color: #333;
-  color: #fff;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.cart-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.cart-table th,
-.cart-table td {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-.cart-table th {
-  background-color: #eee;
-}
-
-.cart-table img {
-  max-width: 100px;
-}
-
-.cart-table input[type="number"] {
-  width: 50px;
-}
-
-.cart-table .remove-from-cart {
-  padding: 5px 10px;
-  border: none;
-  background-color: #333;
-  color: #fff;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.search-form {
-  display: flex;
-  margin: 20px 0;
-}
-
-.search-form input[type="text"] {
-  flex: 1;
-  padding: 10px;
-  font-size: 18px;
-  border: 1px solid #ddd;
-}
-
-.search-form button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #333;
-  color: #fff;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.product-list {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-}
-
-.product-list li {
-  flex: 1;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  max-width: 300px;
-}
-
-.product-list li a {
-  display: block;
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: center;
-}
-
-.product-list li img {
-  max-width: 200px;
-  margin-bottom: 10px;
-}
-
-.product-list li h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.product-list li p {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
+    if (productName.includes(searchTerm) || productDescription.includes(searchTerm)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+});
