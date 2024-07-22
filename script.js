@@ -1,134 +1,114 @@
-const slideshowSlides = document.querySelectorAll(".slideshow-slide");
-const slideCaptions = document.querySelectorAll(".slide-caption");
-
-let slideIndex = 0;
-
-function showSlides() {
-  for (let i = 0; i < slideshowSlides.length; i++) {
-    slideshowSlides[i].classList.remove("active");
-    slideCaptions[i].classList.remove("active");
-  }
-
-  slideIndex++;
-
-  if (slideIndex > slideshowSlides.length) {
-    slideIndex = 1;
-  }
-
-  slideshowSlides[slideIndex - 1].classList.add("active");
-  slideCaptions[slideIndex - 1].classList.add("active");
-
-  setTimeout(showSlides, 5000);
-}
-
-showSlides();
-
-const addToCartButtons = document.querySelectorAll(".add-to-cart");
-const cartTable = document.querySelector(".cart-table");
-
-let cartItems = [];
-
-function addToCart(event) {
-  const productCard = event.target.closest(".product-card");
-  const productImage = productCard.querySelector("img").src;
-  const productName = productCard.querySelector("h1").textContent;
-  const productDescription = productCard.querySelector("p").textContent;
-  const productSize = productCard.querySelector("#product-size").value;
-  const productColor = productCard.querySelector("#product-color").value;
-  const productQuantity = productCard.querySelector("#product-quantity").value;
-
-  const cartItem = {
-    image: productImage,
-    name: productName,
-    description: productDescription,
-    size: productSize,
-    color: productColor,
-    quantity: productQuantity,
-  };
-
-  cartItems.push(cartItem);
-
-  updateCartTable();
-}
-
-function updateCartTable() {
-  cartTable.innerHTML = `
-    <thead>
-      <tr>
-        <th>Image</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Size</th>
-        <th>Color</th>
-        <th>Quantity</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      ${cartItems
-        .map((item, index) => {
-          return `
-            <tr>
-              <td><img src="${item.image}" alt="${item.name}"></td>
-              <td>${item.name}</td>
-              <td>${item.description}</td>
-              <td>${item.size}</td>
-              <td>${item.color}</td>
-              <td><input type="number" value="${item.quantity}" min="1" max="10" data-index="${index}"></td>
-              <td><button class="remove-from-cart" data-index="${index}">Remove</button></td>
-            </tr>
-          `;
-        })
-        .join("")}
-    </tbody>
-  `;
-
-  const quantityInputs = cartTable.querySelectorAll('input[type="number"]');
-  quantityInputs.forEach((input) =>
-    input.addEventListener("input", updateQuantity)
-  );
-
-  const removeButtons = cartTable.querySelectorAll(".remove-from-cart");
-  removeButtons.forEach((button) =>
-    button.addEventListener("click", removeFromCart)
-  );
-}
-
-function updateQuantity(event) {
-  const index = event.target.dataset.index;
-  const quantity = event.target.value;
-  cartItems[index].quantity = quantity;
-
-  updateCartTable();
-}
-
-function removeFromCart(event) {
-  const index = event.target.dataset.index;
-  cartItems.splice(index, 1);
-
-  updateCartTable();
-}
-
-addToCartButtons.forEach((button) =>
-  button.addEventListener("click", addToCart)
-);
-
-const searchForm = document.querySelector(".search-form");
-const productCards = document.querySelectorAll(".product-card");
-
-searchForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const searchTerm = searchForm.querySelector('input[type="text"]').value.toLowerCase();
-
-  productCards.forEach((card) => {
-    const productName = card.querySelector("h1").textContent.toLowerCase();
-    const productDescription = card.querySelector("p").textContent.toLowerCase();
-
-    if (productName.includes(searchTerm) || productDescription.includes(searchTerm)) {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
+document.addEventListener('DOMContentLoaded', function() {
+    // Slideshow sulla homepage
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('#slideshow .slide');
+    function showSlides() {
+        slides.forEach(slide => slide.style.display = 'none');
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+        slides[slideIndex - 1].style.display = 'block';
+        setTimeout(showSlides, 3000); // Cambia immagine ogni 3 secondi
     }
-  });
+    if (slides.length > 0) {
+        showSlides();
+    }
+
+    // Cambio immagine principale nella scheda prodotto
+    const thumbnails = document.querySelectorAll('.thumbnail-images img');
+    const mainImage = document.getElementById('main-image');
+    thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', function() {
+            mainImage.src = this.src;
+        });
+    });
+
+    // Gestione carrello
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartSection = document.getElementById('cart');
+    const updateCart = () => {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        if (cartSection) {
+            renderCart();
+        }
+    };
+
+    const addToCart = (product) => {
+        const existingProduct = cart.find(p => p.id === product.id);
+        if (existingProduct) {
+            existingProduct.quantity += 1;
+        } else {
+            cart.push({...product, quantity: 1});
+        }
+        updateCart();
+    };
+
+    const removeFromCart = (productId) => {
+        cart = cart.filter(p => p.id !== productId);
+        updateCart();
+    };
+
+    const changeQuantity = (productId, quantity) => {
+        const product = cart.find(p => p.id === productId);
+        if (product) {
+            product.quantity = quantity;
+            if (product.quantity <= 0) {
+                removeFromCart(productId);
+            } else {
+                updateCart();
+            }
+        }
+    };
+
+    const renderCart = () => {
+        cartSection.innerHTML = '<h2>Il tuo carrello</h2>';
+        if (cart.length === 0) {
+            cartSection.innerHTML += '<p>Il carrello è vuoto.</p>';
+            return;
+        }
+        cart.forEach(product => {
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+            cartItem.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+                <div class="item-details">
+                    <h3>${product.name}</h3>
+                    <p>${product.description}</p>
+                    <label for="quantity-${product.id}">Quantità:</label>
+                    <input type="number" id="quantity-${product.id}" name="quantity" value="${product.quantity}">
+                    <p>Prezzo: €${product.price}</p>
+                    <button class="remove" data-id="${product.id}">Rimuovi</button>
+                </div>
+            `;
+            cartSection.appendChild(cartItem);
+
+            cartItem.querySelector('input').addEventListener('change', function() {
+                changeQuantity(product.id, parseInt(this.value));
+            });
+
+            cartItem.querySelector('.remove').addEventListener('click', function() {
+                removeFromCart(product.id);
+            });
+        });
+        cartSection.innerHTML += '<button id="update-cart">Aggiorna Carrello</button>';
+        cartSection.innerHTML += '<button id="checkout">Procedi al Checkout</button>';
+    };
+
+    if (cartSection) {
+        renderCart();
+    }
+
+    // Esempio di aggiunta al carrello
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const product = {
+                id: this.dataset.id,
+                name: this.dataset.name,
+                description: this.dataset.description,
+                price: this.dataset.price,
+                image: this.dataset.image
+            };
+            addToCart(product);
+        });
+    });
 });
