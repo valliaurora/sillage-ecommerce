@@ -20,26 +20,33 @@
       </nav>
     </header>
     <main>
-      <div class="slideshow-container">
-        <div class="slideshow-slide fade">
-          <a href="scheda_prodotto.html">
-            <img src="img/PARFUME.jpeg" alt="Prodotto 1" />
-            <div class="slide-caption">Rose Parfume</div>
-          </a>
-        </div>
-        <div class="slideshow-slide fade">
-          <a href="scheda_prodotto.html">
-            <img src="img/PARFUME01.jpeg" alt="Prodotto 2" />
-            <div class="slide-caption">Vanille Parfume</div>
-          </a>
-        </div>
-        <div class="slideshow-slide fade">
-          <a href="scheda_prodotto.html">
-            <img src="img/PARFUME02.jpeg" alt="Prodotto 3" />
-            <div class="slide-caption">Fresh Parfume</div>
-          </a>
-        </div>
-      </div>
+      <div class="container">
+	<h1>SILLAGE</h1>
+    <div class="flexbox-slideshow">
+		<ul class="slideshow">
+			<li class="slide active">
+			  <img src=""img/PARFUME.jpeg"">
+        <div class="caption-container">
+		<div class="caption caption-title">
+			<h2>Eleganza in Fiore</h2>
+		</div>
+		<div class="caption caption-description">
+			<span class="description">Un bouquet raffinato di rose per un tocco di eleganza senza tempo.</span>
+		</div>
+	</div>
+			</li>
+			<li class="slide active" id="slide-1"><!-- ... --></li>
+			<li class="slide" id="slide-2"><!-- ... --></li>
+			<li class="slide" id="slide-3"><!-- ... --></li>
+      
+		</ul>
+		<ul class="dotnav">
+			<li class="dotnav-item active" onclick="changeOrder(this, 1)"><span></span></li>
+			<li class="dotnav-item" onclick="changeOrder(this, 2)"><span></span></li>
+			<li class="dotnav-item" onclick="changeOrder(this, 3)"><span></span></li>
+		</ul>
+	</div>
+ </div>
     </main>
 <br>
     <br>
