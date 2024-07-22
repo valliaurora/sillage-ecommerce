@@ -7,9 +7,9 @@
 }
 
 .navbar-nav {
-        float: center !important;
-        margin-right: 50px !important;
-}
+        float: right !important;
+        margin: 0;
+    }
 
 .btn-primary {
   background-color: #6D4B11 !important;
