@@ -1,44 +1,20 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Slideshow sulla homepage
-const slideshowSlides = document.querySelectorAll(".slideshow-slide");
-const slideCaptions = document.querySelectorAll(".slide-caption");
-
-let slideIndex = 0;
-
-function showSlides() {
-  for (let i = 0; i < slideshowSlides.length; i++) {
-    slideshowSlides[i].classList.remove("active");
-    slideCaptions[i].classList.remove("active");
-  }
-
-  slideIndex++;
-
-  if (slideIndex > slideshowSlides.length) {
-    slideIndex = 1;
-  }
-
-  slideshowSlides[slideIndex - 1].classList.add("active");
-  slideCaptions[slideIndex - 1].classList.add("active");
-
-  setTimeout(showSlides, 5000);
-}
-
-showSlides();
-	
-   <script type="text/javascript">
-function changeOrder(dot, number) {
-	var slides = document.querySelectorAll(".slide");
-	var dots = document.querySelectorAll(".dotnav-item");
-	for (var i = 0; i < slides.length; i++) {
-		slides[i].classList.remove('active');
-		dots[i].classList.remove('active');
-    }
-	var elemName = "slide-" + number;
-	var elem = document.getElementById(elemName);
-	elem.classList.add('active');
-	dot.classList.add('active');
-}
-</script>
+/*swiper*/
+var swiper = new Swiper(".mySwiper", {
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    },)
     
     // Gestione carrello
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
