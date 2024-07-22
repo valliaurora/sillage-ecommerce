@@ -71,10 +71,30 @@ main {
   padding: 20px;
 }
 
-.item {
-width: 100%
-  height: 400px;
-  background-color: #fffff;
+/*swiper*/
+
+.swiper {
+  width: 100%;
+  height: 85%;
+}
+
+.swiper-slide {
+  background: #DD925F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-pagination{
+	align-items: center;
+}
   
 
 .product-card {
