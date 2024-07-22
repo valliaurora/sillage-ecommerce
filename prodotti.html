@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="it">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sillage/title>
+  <title>Sillage</title>
 
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 
@@ -31,7 +32,7 @@
       <div class="container-fluid">
 
         <div class="logo">
-          <img src="img/SILLAGE.png" style="height: 45px">
+          <img src="IMG/SILLAGE.png" style="height: 45px">
         </div>
 
         <a class='navbar-brand' href='index.html'>Sillage</a>
@@ -53,7 +54,6 @@
             <li class="nav-item">
               <a class='nav-link' href='contatti.html'>Contatti</a>
             </li>
-            
           </ul>
         </div>
         <div class="boxcarrello">
@@ -65,28 +65,131 @@
     </nav>
   </header>
 
-
   <main class="container my-5">
-    <div class="row">
-      <div class="col-md-6">
-        <img src="img/PARFUME.jpeg" alt="Immagine profumo" class="img-fluid">
-      </div>
-      <div class="col-md-6">
-        <h1 class="mb-4">Eleganza in Fiore</h1>
-        <p class="mb-4">Un bouquet raffinato di rose per un tocco di eleganza senza tempo.</p>
-        <br>
-        <br>
-        <br>
-        <div style="position: absolute; bottom: 0;">
-          <h4 class="mb-3">Prezzo: €35,00</h4>
-          <form>
+    <h2>Profumi</h2>
+    <br><br>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <a href='schedaprodotto1.html'>
+            <img src="IMG/PARFUME.jpg" class="card-img-top" alt="...">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Rose Bouquet</h5>
+            <p class="card-text">Un bouquet raffinato di rose per un tocco di eleganza senza tempo.</p>
+            <p class="card-text"><strong>Prezzo:</strong> €35,00</p>
             <a href="#" class="btn btn-primary" onclick="aggiungiAlCarrello()">Aggiungi al carrello</a>
-            <a href="#" class="btn btn-primary" onclick="rimuoviDalCarrello()">Rimuovi</a>
-          </form>
+            <a href="#" class="btn btn-primary" onclick="rimuoviDalCarrello()">Rimuovi
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+           <a href='schedaprodotto2.html'>
+          <img src="IMG/PARFUME01.jpg" class="card-img-top" alt="...">
+           </a>
+          <div class="card-body">
+            <h5 class="card-title">Vanilla Bliss</h5>
+            <p class="card-text">Avvolgiti nella dolcezza della vaniglia pura e sofisticata.</p>
+            <p class="card-text"><strong>Prezzo:</strong> €53,00</p>
+            <a href="#" class="btn btn-primary" onclick="aggiungiAlCarrello()">Aggiungi al carrello</a>
+            <a href="#" class="btn btn-primary" onclick="rimuoviDalCarrello()">Rimuovi
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <a href='schedaprodotto3.html'>
+          <img src="IMG/PARFUME02.jpg" class="card-img-top" alt="...">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Fresh Breeze</h5>
+            <p class="card-text">Un'onda di freschezza che risveglia i tuoi sensi con leggerezza e vivacità.</p>
+            <p class="card-text"><strong>Prezzo:</strong> €61,00</p>
+            <a href="#" class="btn btn-primary" onclick="aggiungiAlCarrello()">Aggiungi al carrello</a>
+            <a href="#" class="btn btn-primary" onclick="rimuoviDalCarrello()">Rimuovi
+            </a>
+          </div>
+        </div>
+      </div>
+
+<div class="col">
+        <div class="card h-100">
+          <a href='schedaprodotto4.html'>
+            <img src="IMG/PARFUME03.jpg" class="card-img-top" alt="...">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Mystic Musk</h5>
+            <p class="card-text">Immergiti nella profondità seducente e avvolgente del muschio puro.</p>
+            <p class="card-text"><strong>Prezzo:</strong> €46,00</p>
+            <a href="#" class="btn btn-primary" onclick="aggiungiAlCarrello()">Aggiungi al carrello</a>
+            <a href="#" class="btn btn-primary" onclick="rimuoviDalCarrello()">Rimuovi
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <br>
+    <br>
+
+    <h2>Fragranze</h2>
+    <br><br>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <a href='fragranze.html'>
+            <img src="IMG/FRAGRANZE.jpg" class="card-img-top" alt="...">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Citrus Serenade</h5>
+            <p class="card-text">Energia della Freschezza</p>
+            <p class="card-text"><strong>Prezzo:</strong> €50,00</p>
+            <a href="#" class="btn btn-primary" onclick="aggiungiAlCarrello()">Aggiungi al carrello</a>
+            <a href="#" class="btn btn-primary" onclick="rimuoviDalCarrello()">Rimuovi
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <a href='fragranze1.html'>
+          <img src="IMG/FRAGRANZE1.jpg" class="card-img-top" alt="...">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Ocean Whisper</h5>
+            <p class="card-text">Essenza della Libertà</p>
+            <p class="card-text"><strong>Prezzo:</strong> €63,00</p>
+            <a href="#" class="btn btn-primary" onclick="aggiungiAlCarrello()">Aggiungi al carrello</a>
+            <a href="#" class="btn btn-primary" onclick="rimuoviDalCarrello()">Rimuovi
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <a href='fragranze2.html'>
+          <img src="IMG/FRAGRANZE2.jpg" class="card-img-top" alt="...">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Lavender Dream</h5>
+            <p class="card-text">Tranquillità in Bottiglia</p>
+            <p class="card-text"><strong>Prezzo:</strong> €64,00</p>
+            <a href="#" class="btn btn-primary" onclick="aggiungiAlCarrello()">Aggiungi al carrello</a>
+            <a href="#" class="btn btn-primary" onclick="rimuoviDalCarrello()">Rimuovi
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </main>
+
+    <br>
+    <br>
+
+      </main>
 
   <footer class="text-light py-3" style="background-color:#6D4B11;">
     <div class="container text-center">
