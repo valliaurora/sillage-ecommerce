@@ -49,6 +49,10 @@ body {
   opacity: 0.5;
 }
 
+.root {
+    --swiper-theme-color: #6d4b11;
+}
+
 #col-2 {
   background-image: url("img/FRAGRANCE.jpg");
   background-size: 100%;
