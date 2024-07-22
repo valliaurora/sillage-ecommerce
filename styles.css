@@ -8,7 +8,8 @@
 
 .navbar-nav {
         float: right !important;
-        margin: 0;
+        margin-right: 50px;
+        font-size: medium;
     }
 
 .btn-primary {
