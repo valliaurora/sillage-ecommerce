@@ -13,15 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showSlides();
     }
 
-    // Cambio immagine principale nella scheda prodotto
-    const thumbnails = document.querySelectorAll('.thumbnail-images img');
-    const mainImage = document.getElementById('main-image');
-    thumbnails.forEach(thumbnail => {
-        thumbnail.addEventListener('click', function() {
-            mainImage.src = this.src;
-        });
-    });
-
+    
     // Gestione carrello
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartSection = document.getElementById('cart');
