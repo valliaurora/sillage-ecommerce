@@ -59,6 +59,43 @@ footer {
     margin: 20px;
 }
 
+.product-images {
+    flex: 1;
+    text-align: center;
+}
+
+.product-images #main-image {
+    width: 300px;
+    height: auto;
+}
+
+.thumbnail-images {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.thumbnail-images img {
+    width: 50px;
+    height: auto;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.product-info {
+    flex: 1;
+    margin-left: 20px;
+}
+
+button {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
 #cart {
     margin: 20px;
 }
