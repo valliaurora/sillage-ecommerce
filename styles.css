@@ -6,6 +6,12 @@
   color: #6D4B11 !important;
 }
 
+.navbar-nav {
+        float: right;
+        margin: 0;
+        margin-right: 50px;
+}
+
 .btn-primary {
   background-color: #6D4B11 !important;
   border-color: #6D4B11 !important;
