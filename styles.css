@@ -7,8 +7,8 @@
 }
 
 .navbar-nav {
-        float: center;
-        margin-right: 50px;
+        float: center !important;
+        margin-right: 50px !important;
 }
 
 .btn-primary {
