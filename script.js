@@ -1,5 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Slideshow sulla homepage
+const slideshowSlides = document.querySelectorAll(".slideshow-slide");
+const slideCaptions = document.querySelectorAll(".slide-caption");
+
+let slideIndex = 0;
+
+function showSlides() {
+  for (let i = 0; i < slideshowSlides.length; i++) {
+    slideshowSlides[i].classList.remove("active");
+    slideCaptions[i].classList.remove("active");
+  }
+
+  slideIndex++;
+
+  if (slideIndex > slideshowSlides.length) {
+    slideIndex = 1;
+  }
+
+  slideshowSlides[slideIndex - 1].classList.add("active");
+  slideCaptions[slideIndex - 1].classList.add("active");
+
+  setTimeout(showSlides, 5000);
+}
+
+showSlides();
+	
    <script type="text/javascript">
 function changeOrder(dot, number) {
 	var slides = document.querySelectorAll(".slide");
