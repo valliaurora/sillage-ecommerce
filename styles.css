@@ -71,17 +71,17 @@ body {
 
 
 #col-2 {
-  background-image: url("img/FRAGRANCE.jpg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-  height: 500px;
-  text-align: center;
-  padding-top: 180px;
-  margin-right: 7px;
-  margin-left: 7px;
-  border-radius: 5px;
+    background-image: url(img/FRAGRANCE.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 500px;
+    text-align: center;
+    padding-top: 180px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-radius: 25px;
 }
 
 #scopri {
