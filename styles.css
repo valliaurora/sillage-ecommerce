@@ -85,7 +85,8 @@ body {
 }
 
 #scopri {
-  color: #6D4B11;
+    color: #fff;
+    text-shadow: -6px 5px 12px black;
 }
 
 
@@ -110,6 +111,9 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+.h1, h1 {
+    font-size: 36px;
+}
 
 .hr {
   color: #6D4B11 !important;
