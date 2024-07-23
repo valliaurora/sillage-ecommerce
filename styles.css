@@ -60,6 +60,11 @@ body {
     color: #6d4b11;
 }
 
+.swiper-pagination-bullet-active {
+    opacity: var(--swiper-pagination-bullet-opacity, 1);
+    background: #6d4b11;
+}
+
 .style .card-img-top:hover {
   opacity: 0.5;
 }
